@@ -42,14 +42,21 @@ def select(function_code):
         item_index = int(user_input("Index Number? "))
     # Remember that item_index must actually exist or our program will crash.
         print(read(item_index))
+        if item_index > len(checklist):
+            print ("invalid input")
+
     # Print all items
     elif function_code == "P":
         list_all_items()
     elif function_code == "D":
         input_item = user_input("Destroy Index: ")
-        destroy(input_item)
+        if len(checklist) == 0:
+            print("Empty List")
+        else:
+            destroy(input_item)
+
     elif function_code == "R":
-        item_index = int(user_input("Return Index: "))
+        item_index = int(user_input("R For Index: "))
         read(item_index)
         print(read(item_index))
     elif function_code == "U":
@@ -58,6 +65,7 @@ def select(function_code):
          update(item_index, item_update)
     else:
         return True
+
 
 def test():
     create("purple sox")
@@ -74,7 +82,7 @@ def test():
 
     list_all_items()
 
-test()
+#test()
 
 running = True
 while running:
