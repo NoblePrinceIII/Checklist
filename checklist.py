@@ -35,11 +35,11 @@ def user_input(prompt):
 def select(function_code):
     # Create item
     if function_code == "C":
-        input_item = user_input("Input item:")
+        input_item = user_input("Input item: ")
         create(input_item)
     # Read item
     elif function_code == "I":
-        item_index = int(user_input("Index Number?"))
+        item_index = int(user_input("Index Number? "))
     # Remember that item_index must actually exist or our program will crash.
         print(read(item_index))
     # Print all items
@@ -52,12 +52,10 @@ def select(function_code):
         item_index = int(user_input("Return Index: "))
         read(item_index)
         print(read(item_index))
-    #elif function_code
-        
-
-
-
-    # Catch all
+    elif function_code == "U":
+         item_index = int(user_input("Update Index: "))
+         item_update = user_input("Update Here")
+         update(item_index, item_update)
     else:
         return True
 
@@ -76,12 +74,10 @@ def test():
 
     list_all_items()
 
-
-
 test()
 
 running = True
 while running:
     selection = user_input(
-        "Press C to add to list, R to Read from list and P to display list Press D to Del Press R to Retrun Index: ")
+        "Press C to add to list, R to Read from list and P to display list Press D to Del Press R to Retrun Index Press U to Update Index: ")
     select(selection.upper())
