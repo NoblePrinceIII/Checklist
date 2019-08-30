@@ -11,17 +11,23 @@ def read(index):
 # UPDATE
 def update(index, item): #check index
     checklist[index] = item
+    if index > len(checklist):
+        print("Invalid")
+    else:
+        checklist[index] = item
 
 # DESTROY
 def destroy(index):
     checklist.pop(int(index))
     print(checklist)
 
+#List of Items
 def list_all_items():
     index = 0
     for list_item in checklist:
         print("{} {}".format(index, list_item))
 
+#Check Mark
 def mark_completed(index):
     checklist[index] = " √ " + checklist[index]
     # Add code here that marks an item as completed
@@ -37,15 +43,15 @@ def select(function_code):
     if function_code == "C":
         input_item = user_input("Input item: ")
         create(input_item)
-    # Read item
+
+    # Index Number
     elif function_code == "I":
         item_index = int(user_input("Index Number? "))
-    # Remember that item_index must actually exist or our program will crash.
         print(read(item_index))
         if item_index > len(checklist):
             print ("invalid input")
 
-    # Print all items
+    # Destroy Index
     elif function_code == "P":
         list_all_items()
     elif function_code == "D":
@@ -55,17 +61,23 @@ def select(function_code):
         else:
             destroy(input_item)
 
+            # Read Index
     elif function_code == "R":
         item_index = int(user_input("R For Index: "))
         read(item_index)
         print(read(item_index))
+
+        #Update Index
     elif function_code == "U":
-         item_index = int(user_input("Update Index: "))
-         item_update = user_input("Update Here")
-         update(item_index, item_update)
+         try:
+             item_index = int(user_input("Update Index: "))
+             item_update = user_input("Update Here ")
+             update(item_index, item_update)
+         except ValueError:
+             print("Not Okay")
+
     else:
         return True
-
 
 def test():
     create("purple sox")
