@@ -1,16 +1,19 @@
 checklist = list()
 
 
+# Create
 def create(item):
     checklist.append(item)
 
 
+# Read
 def read(index):
     if len(Index) < 1:
         print("No Index")
     return checklist[index]
 
 
+# Update
 def update(index, item):
     checklist[index] = item
     if index > len(checklist):
@@ -19,21 +22,25 @@ def update(index, item):
         checklist[index] = item
 
 
+# Destroy
 def destroy(index):
     checklist.pop(int(index))
     print(checklist)
 
 
+# Lists of all items
 def list_all_items():
     index = 0
     for list_item in checklist:
         print("{} {}".format(index, list_item))
 
-        # marks item completed
+
+# marks item completed
 def mark_completed(index):
     checklist[index] = " √ " + checklist[index]
 
 
+# user inputs
 def user_input(prompt):
     # the input function will display a message in the terminal
     # and wait for user input.
@@ -110,6 +117,6 @@ running = True
 while running:
     selection = user_input(
         "Press C create list, I to view Index list P to display list Press " +
-         "D to Delete   Press R to Retrun Index Press U to Update Index " +
+        "D to Delete   Press R to Retrun Index Press U to Update Index " +
         "Press X when completed: ")
     select(selection.upper())
