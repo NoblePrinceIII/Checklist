@@ -69,7 +69,6 @@ def select(function_code):
         # Shows whats in Index
         elif function_code == "P":
             list_all_items()
-
         # Allows user to checklist
         elif function_code == "X":
             item_index = int(user_input("X index to complete: "))
